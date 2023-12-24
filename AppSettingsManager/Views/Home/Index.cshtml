@@ -21,5 +21,10 @@
         <p>Auth Injected</p>
         <p>@configuration.GetSection("Auth:SectretKey").Value</p>
         <p>@configuration.GetSection("Auth:PublicKey").Value</p>
+        <hr />
+        <p>Auth from controller With IOption</p>
+        <p>@ViewBag.SectretKey</p>
+        <p>@ViewBag.PublicKey</p>
+        <p>@ViewBag.PhoneNumber</p>
     </div>
 </div>
