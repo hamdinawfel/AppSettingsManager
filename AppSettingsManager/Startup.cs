@@ -25,9 +25,11 @@ namespace AppSettingsManager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            var authSettings = new AuthSettings();
-            new ConfigureFromConfigurationOptions<AuthSettings>(Configuration.GetSection("Auth")).Configure(authSettings);
-            services.AddSingleton(authSettings);
+            //var authSettings = new AuthSettings();
+            //new ConfigureFromConfigurationOptions<AuthSettings>(Configuration.GetSection("Auth")).Configure(authSettings);
+            //services.AddSingleton(authSettings);
+
+            services.AddConfiguration<AuthSettings>(Configuration, "Auth");
 
             services.Configure<AuthSettings>(Configuration.GetSection("Auth"));
             services.AddControllersWithViews();
