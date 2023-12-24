@@ -58,7 +58,7 @@ namespace AppSettingsManager.Controllers
 
             ViewBag.FacebookKey = _socialLoginSettings.Value.FacebookLoginSettings.Key;
             ViewBag.GoogleKey = _socialLoginSettings.Value.GoogleLoginSettings.Key;
-
+            ViewBag.ConnectionString = _configuration.GetConnectionString("AppSettingsManagerDb");
 
             return View();
         }
