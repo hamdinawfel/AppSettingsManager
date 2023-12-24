@@ -23,6 +23,7 @@ namespace AppSettingsManager
                     builder.Sources.Clear();
                     builder.AddJsonFile("appsettings.json", optional:false, reloadOnChange: true);
                     builder.AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}json", optional:true, reloadOnChange: true);
+                    builder.AddJsonFile("CustomJson.json", optional:true, reloadOnChange: true);
                     if (hostingContext.HostingEnvironment.IsDevelopment())
                     {
                         builder.AddUserSecrets<Program>();
