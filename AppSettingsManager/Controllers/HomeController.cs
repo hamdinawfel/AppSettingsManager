@@ -18,11 +18,13 @@ namespace AppSettingsManager.Controllers
         private readonly AuthSettings _authSettings;
 
         private readonly IOptions<AuthSettings> _authOptions;
+        private readonly IOptions<SocialLoginSettings> _socialLoginSettings;
 
         public HomeController(IConfiguration configuration,
                               ILogger<HomeController> logger,
                               AuthSettings authSettings,
-                              IOptions<AuthSettings> authOptions)
+                              IOptions<AuthSettings> authOptions,
+                              IOptions<SocialLoginSettings> socialLoginSettings)
         {
             _configuration = configuration;
             _logger = logger;
@@ -31,7 +33,7 @@ namespace AppSettingsManager.Controllers
             //_authSettings = new AuthSettings();
             //_configuration.GetSection("Auth").Bind(_authSettings);
             _authOptions = authOptions;
-
+            _socialLoginSettings = socialLoginSettings;
         }
 
         public IActionResult Index()
@@ -53,6 +55,11 @@ namespace AppSettingsManager.Controllers
             ViewBag.SectretKey = _authSettings.SectretKey;
             ViewBag.PublicKey = _authSettings.PublicKey;
             ViewBag.PhoneNumber = _authSettings.PhoneNumber;
+
+            ViewBag.FacebookKey = _socialLoginSettings.Value.FacebookLoginSettings.Key;
+            ViewBag.GoogleKey = _socialLoginSettings.Value.GoogleLoginSettings.Key;
+
+
             return View();
         }
 

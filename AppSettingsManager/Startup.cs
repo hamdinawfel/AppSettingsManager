@@ -32,6 +32,7 @@ namespace AppSettingsManager
             services.AddConfiguration<AuthSettings>(Configuration, "Auth");
 
             services.Configure<AuthSettings>(Configuration.GetSection("Auth"));
+            services.Configure<SocialLoginSettings>(Configuration.GetSection("SocialLoginSettings"));
             services.AddControllersWithViews();
         }
 
