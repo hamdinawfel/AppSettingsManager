@@ -14,11 +14,16 @@ namespace AppSettingsManager.Controllers
     {
         private readonly IConfiguration _configuration;
         private readonly ILogger<HomeController> _logger;
+        private readonly AuthSettings _authSettings;
 
-        public HomeController(IConfiguration configuration, ILogger<HomeController> logger)
+        public HomeController(IConfiguration configuration,
+                              ILogger<HomeController> logger)
         {
             _configuration = configuration;
             _logger = logger;
+            _authSettings = new AuthSettings();
+            _configuration.GetSection("Auth").Bind(_authSettings);
+
         }
 
         public IActionResult Index()
@@ -28,6 +33,7 @@ namespace AppSettingsManager.Controllers
             //ViewBag.PublicKey = _configuration.GetValue<string>("Auth:PublicKey");
 
             ViewBag.PublicKey = _configuration.GetSection("Auth").GetValue<string>("PublicKey");
+            ViewBag.PhoneNumber = _authSettings.PhoneNumber;
 
             return View();
         }
