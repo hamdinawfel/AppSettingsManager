@@ -1,4 +1,5 @@
 ﻿@inject Microsoft.Extensions.Configuration.IConfiguration configuration
+@inject Microsoft.Extensions.Options.IOptions<SocialLoginSettings> socialLoginSettings
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -32,7 +33,13 @@
 <hr />
 <div class="row">
     <div class="col-6">
+        <p>social settings from controller</p>
         <p>@ViewBag.FacebookKey</p>
         <p>@ViewBag.GoogleKey</p>
+    </div>
+    <div class="col-6">
+        <p>social settings with injected IOption</p>
+        <p>@socialLoginSettings.Value.FacebookLoginSettings.Key</p>
+        <p>@socialLoginSettings.Value.GoogleLoginSettings.Key</p>
     </div>
 </div>
