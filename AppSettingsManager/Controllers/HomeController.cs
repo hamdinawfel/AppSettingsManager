@@ -49,7 +49,7 @@ namespace AppSettingsManager.Controllers
             // By using IOptions
             //ViewBag.SectretKey = _authOptions.Value.SectretKey;
             //ViewBag.PublicKey = _authOptions.Value.PublicKey;
-            //ViewBag.PhoneNumber = _authOptions.Value.PhoneNumber;
+            ViewBag.PhoneNumber = _authOptions.Value.PhoneNumber;
 
             // By Bind AuthSettings In Startup file
             ViewBag.SectretKey = _authSettings.SectretKey;

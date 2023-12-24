@@ -13,9 +13,9 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation",
-        "SendGridKey": "AppSettings SendGridKey 1111 from Envirement variable",
-        "Auth__PhoneNumber": "AppSettings PhoneNumber +126 21 888 000 from Envirement variable"
+        "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
+        //"SendGridKey": "AppSettings SendGridKey 1111 from Envirement variable",
+        //"Auth__PhoneNumber": "AppSettings PhoneNumber +126 21 888 000 from Envirement variable"
       }
     },
     "AppSettingsManager": {
