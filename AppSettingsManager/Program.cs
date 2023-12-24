@@ -30,6 +30,13 @@ namespace AppSettingsManager
                     }
                     builder.AddEnvironmentVariables();
                     builder.AddCommandLine(args);
+
+                    if (hostingContext.HostingEnvironment.IsDevelopment())
+                    {
+                        return;
+                    }
+                    var buildConfig = builder.Build();
+                    builder.AddAzureKeyVault($"https://{buildConfig["KeyVaultName"]}.vault.azure.net/");
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
