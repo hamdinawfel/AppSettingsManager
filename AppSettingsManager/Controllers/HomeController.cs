@@ -21,12 +21,15 @@ namespace AppSettingsManager.Controllers
 
         public HomeController(IConfiguration configuration,
                               ILogger<HomeController> logger,
+                              AuthSettings authSettings,
                               IOptions<AuthSettings> authOptions)
         {
             _configuration = configuration;
             _logger = logger;
-            _authSettings = new AuthSettings();
-            _configuration.GetSection("Auth").Bind(_authSettings);
+            _authSettings = authSettings;
+            // This moved to Startup class file
+            //_authSettings = new AuthSettings();
+            //_configuration.GetSection("Auth").Bind(_authSettings);
             _authOptions = authOptions;
 
         }
@@ -40,11 +43,16 @@ namespace AppSettingsManager.Controllers
 
             //ViewBag.PublicKey = _configuration.GetSection("Auth").GetValue<string>("PublicKey");
             //ViewBag.PhoneNumber = _authSettings.PhoneNumber;
-            // By using IOptions
-            ViewBag.SectretKey = _authOptions.Value.SectretKey;
-            ViewBag.PublicKey = _authOptions.Value.PublicKey;
-            ViewBag.PhoneNumber = _authOptions.Value.PhoneNumber;
 
+            // By using IOptions
+            //ViewBag.SectretKey = _authOptions.Value.SectretKey;
+            //ViewBag.PublicKey = _authOptions.Value.PublicKey;
+            //ViewBag.PhoneNumber = _authOptions.Value.PhoneNumber;
+
+            // By Bind AuthSettings In Startup file
+            ViewBag.SectretKey = _authSettings.SectretKey;
+            ViewBag.PublicKey = _authSettings.PublicKey;
+            ViewBag.PhoneNumber = _authSettings.PhoneNumber;
             return View();
         }
 
